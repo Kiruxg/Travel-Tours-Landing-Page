@@ -1,0 +1,111 @@
+.section-stories {
+    padding: 10rem;
+    position: relative;
+    height: 100%;
+    @include respond(tab-land) {
+        padding: 10rem 5rem;
+
+    }
+    @include respond(tab-port) {
+        padding: 0;
+
+    }
+    @include respond(phone) {
+        padding-bottom: 4rem;
+
+    }
+    .heading-secondary {
+        @include headingTitle;
+    }
+    .bg-video {
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -100;
+        opacity: .15;
+        &__content {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; //html element (img/video) will fill entire parent while still maintaining aspect ratio, parts that dont fit will be clipped off
+        }
+    }
+    .story {
+        width: 75%;
+        box-shadow: 0 3rem 6rem rgba($color-black, .1);
+        background-color: rgba($color-white, .6);
+        border-radius: 3px;
+        padding: 6rem;
+        padding-left: 9rem;
+        margin: 40px auto;
+        font-size: $default-font-size;
+        transform: skewX(-12deg);
+        position: relative;
+
+        @include respond(tab-land) {
+            padding: 4rem;
+            width: 90%;
+        }
+        @include respond(phone) {
+            transform: skewX(0);
+            width: 90%;
+            margin: 2rem auto;
+        }
+        & > * {
+            transform: skewX(12deg);
+
+            @include respond(phone) {
+                transform: skewX(0);
+            }
+        }
+        &__caption {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 150%);
+            opacity: 1;
+            color: white;
+            text-transform: uppercase;
+            font-size: 1.7rem;
+            text-align: center;
+            transition: all .5s ease;
+            backface-visibility: hidden;
+        }
+        &:hover .story__caption {
+            transform: translate(-50%, -50%);
+            opacity: 1;
+        }
+        &:hover .story__image {
+            transform: translateX(-4rem) scale(1.1);
+            filter: brightness(80%) blur(3px); //value over 100 makes it lighter, under 100 darker.
+            transition: all .3s;
+        }
+    }
+    .story__shape {
+        width: 15rem;
+        height: 15rem;
+        float: left;
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%); //defines where how content around element wraps around element
+        //radius centered horizontal and vertically, needs to be floated and have defined dimensions (width/height)
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+        transform: translateX(-3rem) skewX(12deg);
+        overflow: hidden; //cuts out part of image that overflows from container
+        
+        @include respond(phone) {
+            transform: translateX(-3rem) skewX(0);
+        }
+    }
+    .story__image {
+        height: 100%;
+        transform: translateX(-4rem) scale(1.4);
+        transition: all .4s ease;
+        backface-visibility: hidden;
+        transition: filter .3s;
+        transition: transform .3s;
+    }
+
+}

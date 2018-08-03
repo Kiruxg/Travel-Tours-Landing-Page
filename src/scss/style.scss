@@ -1,0 +1,236 @@
+@import "mixins";
+@import "variables";
+@import "home";
+@import "utilities";
+@import "featurespage";
+@import "tours";
+@import "testimonial";
+@import "contact";
+@import "footer";
+@import "navigation";
+//part of 7-1 css architecure, utilities are effective in performing 1 task
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    /* force inheritance on non-inherited properties */
+}
+
+/* font family in body to benefit from inheritance */
+
+html {
+    font-size: 62.5%;
+    /*allow user to zoom in on page to change font-size instead of hardcoding a px*/
+    /*
+    DESKTOP FIRST: larger media queries first because as smaller sizes conflict with more than 1, last will be applied
+    */
+    @include respond(tab-land) {
+        font-size: 56.25%;
+    }
+    @include respond(tab-port) {
+        font-size: 50%;
+    }
+    @include respond(phone) {
+        font-size: 50%;
+    }
+    @include respond(big-desktop) {
+        font-size: 75%;
+    }
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    /* 1.7 times bigger than default */
+    color: $color-grey-dark;
+    padding: 3rem;
+    box-sizing: border-box;
+
+    @include respond(tab-port) {
+        padding: 0;
+    }
+}
+
+.header {
+    position: relative;
+    height: 95vh;
+    background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(85, 197, 122, 0.8)),
+    url('../img/hero.jpg');
+    /* background img on top */
+    background-size: cover;
+    /* fits image on viewport width */
+    background-position: top;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
+    /* specifies corners of header topleft topright bottomright bottomleft */
+    .logo-box {
+        position: absolute;
+        top: 4rem;
+        left: 4rem;
+        .logo {
+            height: 3.5rem;
+            /* browser already configures width */
+        }
+    }
+    .textbox {
+        position: absolute;
+        top: 50%;
+        /* 50% height of parent element */
+        left: 50%;
+        /* 50% width of parent element */
+        transform: translate(-50%, -65%);
+        text-align: center;
+        .heading-primary {
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 1.8rem;
+            text-align: center;
+            backface-visibility: hidden;
+
+
+            &main {
+                display: block;
+                letter-spacing: 2rem;
+                animation: moveInLeft 1s ease-in-out;
+                /*
+	animation-delay: 2s;
+	animation-iteration-count: 3s;
+	*/
+                @include respond(phone) {
+                    letter-spacing: 1rem;
+                }
+            }
+            .heading-primary-sub {
+                display: block;
+                font-size: 1.5rem;
+                font-weight: 400;
+                letter-spacing: 8px;
+                animation: moveInRight 1s ease-in-out;
+
+                @include respond(phone) {
+                    font-size: 1.8rem;
+                }
+            }
+        }
+    }
+}
+
+.row {
+    margin: 0 auto;
+    width: 88%;
+    @include respond(tab-land) {
+    }
+    @include respond(phone) {
+        max-width: 100%;
+    }
+}
+
+.btn {
+    &,
+    .btn:link,
+    .btn:visited {
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 1.5rem 4rem;
+        display: inline-block;
+        transition: all .2s ease-in-out;
+        border-radius: 10rem;
+        position: relative;
+        font-size: $default-font-size; //Change for the <button> element
+        border: none;
+        cursor: pointer;
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.btn-text {
+    &:link,
+    &:visited {
+        font-size: $default-font-size;
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 1px solid $color-primary;
+        padding: 3px; //very small pixels can be left to stay
+        transition: all .2s;
+    }
+    &:hover {
+        background-color: $color-primary;
+        color: white;
+        box-shadow: 0 1rem 2rem rgba($color-black, .15); //X Y Blur Color
+        transform: translateY(-2px);
+    }
+    &:active {
+        box-shadow: 0 .5rem 1rem rgba($color-black, .15); //X Y Blur Color
+        transform: translateY(0);
+    }
+}
+
+.btn-white {
+    margin-top: 6rem;
+    background: white;
+    color: $color-grey-dark;
+}
+
+.btn-green {
+    background: $color-primary-dark;
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    /* offset 10px down */
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    /* offset 10px down */
+}
+
+.btn::after {
+    /*pseudo element treated as child of btn */
+    content: "";
+    display: inline-block;
+    /* since button is also inline block */
+    width: 100%;
+    height: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s ease-in-out;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+    /* invisible */
+}
+
+.btn-animated {
+    animation: moveInBottom .5s ease-out .75s;
+    /*name, duration, timing function, delay */
+    animation-fill-mode: backwards;
+    /* give 0% animation style */
+}
+::selection{
+    background-color: $color-primary;
+    color: $color-white;
+}
