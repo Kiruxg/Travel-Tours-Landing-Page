@@ -1,66 +1,65 @@
 .section-features {
-    padding: 20rem 0;
-    padding-top: 25rem;
-    background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(85, 197, 122, 0.8)),
-    url('../img/nat-4.jpg');
-    /* background img on top */
-    /* fits image on viewport width */
-    //	clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
-    /* specifies corners of header topleft topright bottomright bottomleft */
-    transform: skewY(-7deg);
-    margin-top: -10rem;
+  padding: 20rem 0;
+  padding-top: 25rem;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(85, 197, 122, 0.8)), url("../img/nat-4.jpg");
+  /* background img on top */
+  /* fits image on viewport width */
+  //	clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
+  /* specifies corners of header topleft topright bottomright bottomleft */
+  transform: skewY(-7deg);
+  margin-top: -10rem;
+  @include respond(tab-land) {
+    padding-top: 12rem;
+    margin-bottom: -10rem;
+  }
+  @include respond(phone) {
+    padding-top: 10rem;
+    margin-bottom: -10rem;
+  }
+
+  & > * //selects everything that is a direct child of parent
+  {
+    transform: skewY(7deg); //if we put this in .feature-box, we will have to add the same property to every box in the selector.
+  }
+  .feature-box {
+    background-color: rgba($color-white, 0.8);
+    font-size: 1.4rem;
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15); // X Y Blur Color
+    margin: 0 20px;
+    display: inline-block;
+    transition: transform 0.3s;
+    @media only screen and (min-width: 1200px) {
+      width: 15vw;
+    }
     @include respond(tab-land) {
-        padding-top: 12rem;
-        margin-bottom: -10rem;
+      margin: 1.5rem auto;
+      padding: 3rem;
+      display: block;
+      width: 190px;
     }
     @include respond(phone) {
-        padding-top: 10rem;
-        margin-bottom: -10rem;
     }
 
-
-    & > * //selects everything that is a direct child of parent
-        {
-        transform: skewY(7deg); //if we put this in .feature-box, we will have to add the same property to every box in the selector.
+    .heading-tertiary {
+      text-transform: uppercase;
     }
-    .feature-box {
-        background-color: rgba($color-white, .8);
-        font-size: 1.4rem;
-        padding: 2.2rem;
-        text-align: center;
-        border-radius: 3px;
-        box-shadow: 0 1.5rem 4rem rgba($color-black, .15); // X Y Blur Color
-        width: 23%;
-        margin: 0 auto;
-        display: inline-block;
-        transition: transform .3s;
-
-        @include respond(tab-land) {
-            width: 70%;
-            margin: 1.5rem auto;
-            padding: 3rem;
-            display: block;
-        }
-        @include respond(phone) {
-            width: 90%;
-        }
-
-        .heading-tertiary {
-            text-transform: uppercase;
-        }
-        & [class^='icon'] {
-            font-size: 6rem;
-            margin-bottom: .5rem;
-            display: inline-block;
-            color: $color-primary-dark;
-            @supports(-webkit-background-clip: text){
-            background: linear-gradient(to right, $color-primary-light, $color-primary-dark);
-            color: transparent; //make text invisible
-            -webkit-background-clip: text; //clips background to where text appears
-            }
-        }
-        &:hover {
-            transform: translateY(-1.5rem) scale(1.03);
-        }
+    & [class^="icon"] {
+      font-size: 6rem;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+      color: $color-primary-dark;
+      @supports (-webkit-background-clip: text) {
+        background: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+        color: transparent; //make text invisible
+        -webkit-background-clip: text; //clips background to where text appears
+        margin-top: 30px;
+      }
     }
+    &:hover {
+      transform: translateY(-1.5rem) scale(1.03);
+    }
+  }
 }

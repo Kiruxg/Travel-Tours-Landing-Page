@@ -1,86 +1,87 @@
 .section-about {
-    background: $color-grey-light-1;
-    height: 100vh;
-    padding: 15rem 0 65rem 0;
-    margin-top: -15vh;
+  background: $color-grey-light-1;
+  height: 100vh;
+  padding: 15rem 0 65rem 0;
+  margin-top: -15vh;
 
-    @include respond(phone) {
-        height: auto;
-    }
+  @include respond(phone) {
+    height: auto;
+  }
+  @include respond(tab-port) {
+    margin-bottom: -25rem;
+    height: 100%;
+  }
+  .col-1-of-2 {
+    display: block;
+    width: 40%;
+    float: left;
+    margin-left: 20px;
+
     @include respond(tab-port) {
-        margin-bottom: -25rem;
-        height: 100%;
+      width: 80%;
+      float: none;
+      margin: 6rem auto;
     }
-    .col-1-of-2 {
-        display: block;
-        width: 40%;
-        float: left;
-        margin-left: 20px;
+  }
+  .full-column {
+    display: block;
+    height: 100%;
+    width: 85%;
+    margin: 0 auto;
+    margin-top: 120px;
+    @include respond(tab-port) {
+      width: 90%;
+    }
+  }
+  .heading-secondary {
+    @include headingTitle;
+    margin-top: 30px;
+  }
+  .heading-tertiary {
+    font-size: $default-font-size;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .paragraph {
+    font-size: $default-font-size;
+    &:not(:last-child) {
+      margin-bottom: 3rem;
+    }
+  }
 
-        @include respond (tab-port) {
-            width: 80%;
-            float: none;
-            margin: 6rem auto;
+  .composition {
+    position: relative;
+    &__photo {
+      width: 45%;
+      box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+      border-radius: 2px;
+      position: absolute;
+      z-index: 10;
+      // outline-offset: 1.4rem;
+      transition: all 0.2s;
 
-        }
+      &--p1 {
+        left: 0;
+        top: -2rem;
+      }
+      &--p2 {
+        right: 30px;
+        top: 16rem;
+      }
+      &--p3 {
+        left: 20%;
+        top: 8rem;
+      }
+      &:hover {
+        outline: 1rem solid $color-primary;
+        z-index: 20;
+        transform: scale(1.05) translateY(-0.5rem);
+        box-shadow: 0 2.5rem 5rem rgba($color-black, 0.5);
+      }
     }
-    .col-2-of-2 {
-        display: block;
-        width: 50%;
-        float: right;
-        @include respond (tab-port) {
-            width: 90%;
-        }
+    &:hover &__photo:not(:hover) {
+      //on composition hover, select the photo that is not hovered
+      transform: scale(0.95);
     }
-    .heading-secondary {
-        @include headingTitle;
-    }
-    .heading-tertiary {
-        font-size: $default-font-size;
-        font-weight: 700;
-        text-transform: uppercase;
-    }
-    .paragraph {
-        font-size: $default-font-size;
-        &:not(:last-child) {
-            margin-bottom: 3rem;
-        }
-    }
-
-    .composition {
-        position: relative;
-        &__photo {
-            width: 45%;
-            box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, .4);
-            border-radius: 2px;
-            position: absolute;
-            z-index: 10;
-            outline-offset: 1.4rem;
-            transition: all .2s;
-
-            &--p1 {
-                left: 0;
-                top: -2rem;
-            }
-            &--p2 {
-                right: 30px;
-                top: 16rem;
-            }
-            &--p3 {
-                left: 20%;
-                top: 8rem;
-            }
-            &:hover {
-                outline: 1.5rem solid $color-primary;
-                z-index: 20;
-                transform: scale(1.05) translateY(-.5rem);
-                box-shadow: 0 2.5rem 5rem rgba($color-black, .5);
-            }
-        }
-        &:hover &__photo:not(:hover) {
-            //on composition hover, select the photo that is not hovered
-            transform: scale(.95);
-        }
-    }
-
+  }
 }
