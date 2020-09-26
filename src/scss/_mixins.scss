@@ -1,93 +1,76 @@
-@keyframes moveInLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(-10rem);
-    }
-    70% {
-        transform: translateX(2rem);
-    }
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
-}
-
-@keyframes moveInRight {
-    0% {
-        opacity: 0;
-        transform: translateX(10rem);
-    }
-    70% {
-        transform: translateX(-2rem);
-    }
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
-}
-
 @keyframes moveInBottom {
-    0% {
-        opacity: 0;
-        transform: translateY(3rem);
-    }
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(-6rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-6rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
 }
 
 @mixin headingTitle {
-    font-size: 3.5rem;
-    text-transform: uppercase;
-    font-weight: 700;
-    display: inline-block; //make it so that gradient does not occupy 100% of div as display block;
-    color: $color-primary-dark;
-    @supports ((-webkit-background-clip:text) or (background-clip:text)){
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block; //make it so that gradient does not occupy 100% of div as display block;
+  color: $color-primary-dark;
+  @supports ((-webkit-background-clip: text) or (background-clip: text)) {
     -webkit-background-clip: text; //clips background to where text appears
     background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
     color: transparent; //make text invisible
-    }
-    transition: all .2s ease-in;
-    letter-spacing: 2px;
-    text-decoration: none;
-    &:hover {
-//        transform: skewY(6deg) skewX(6deg) scale(1.1);
-    }
-    @include respond(tab-land) {
-        font-size: 3rem;
-    }
-    @include respond(tab-port) {
-        font-size: 3rem;
-
-    }
-    @include respond(phone) {
-        font-size: 2.5rem;
-
-    }
+  }
+  transition: all 0.2s ease-in;
+  letter-spacing: 2px;
+  text-decoration: none;
+  &:hover {
+    //        transform: skewY(6deg) skewX(6deg) scale(1.1);
+  }
+  @include respond(tab-land) {
+    font-size: 3rem;
+  }
+  @include respond(tab-port) {
+    font-size: 3rem;
+  }
+  @include respond(phone) {
+    font-size: 2.5rem;
+  }
 }
 
 @mixin greenLink {
-    font-size: 1.6rem;
-    color: #55c57a;
-    display: inline-block;
-    text-decoration: none;
-    border-bottom: 1px solid #55c57a;
-    padding: 3px;
-    transition: all .2s;
-    &:hover {
-        background-color: #55c57a;
-        color: white;
-        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
-        transform: translateY(-2px);
-    }
+  font-size: 1.6rem;
+  color: #55c57a;
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 1px solid #55c57a;
+  padding: 3px;
+  transition: all 0.2s;
+  &:hover {
+    background-color: #55c57a;
+    color: white;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
 }
 
 @mixin absCenter {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 //MEDIA QUERY MANAGER
@@ -105,28 +88,24 @@ ORDER: Base + typography > general layout + grid > page layout > components
 //@ include mixin_name {}
 //In media queries, rem and em are not dependent on a parent, they are dependent on the browser default font.. EM IS BETTER FOR MEDIA QUERIES
 @mixin respond($breakpoint) {
-    @if $breakpoint==phone {
-        @media only screen and (max-width: 37.5em) {
-            @content
-        }
-        ; //600px
-    }
-    @if $breakpoint==tab-port {
-        @media only screen and (max-width: 56.25em) {
-            @content
-        }
-        ; //900px
-    }
-    @if $breakpoint==tab-land {
-        @media only screen and (max-width: 75em) {
-            @content
-        }
-        ; //1200px
-    }
-    @if $breakpoint==big-desktop {
-        @media only screen and (min-width: 112.5em) {
-            @content
-        }
-        ; //1800
-    }
+  @if $breakpoint==phone {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    } //600px
+  }
+  @if $breakpoint==tab-port {
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    } //900px
+  }
+  @if $breakpoint==tab-land {
+    @media only screen and (max-width: 75em) {
+      @content;
+    } //1200px
+  }
+  @if $breakpoint==big-desktop {
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    } //1800
+  }
 }

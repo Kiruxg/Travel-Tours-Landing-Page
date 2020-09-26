@@ -55,7 +55,6 @@
         background: linear-gradient(to right, $color-primary-light, $color-primary-dark);
         color: transparent; //make text invisible
         -webkit-background-clip: text; //clips background to where text appears
-        margin-top: 30px;
       }
     }
     &:hover {

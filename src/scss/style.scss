@@ -90,8 +90,8 @@ blockquote:after {
   margin-right: 0.25em;
   vertical-align: -0.4em;
   position: absolute;
-  bottom: 0px;
-  right: 0px;
+  bottom: 5px;
+  right: 5px;
 }
 blockquote p {
   display: inline;
@@ -135,7 +135,7 @@ blockquote p {
         display: block;
         letter-spacing: 2rem;
         font-weight: 400;
-        animation: moveInLeft 1s ease-in-out;
+        animation: moveInBottom 1s ease-in-out;
         /*
 	animation-delay: 2s;
 	animation-iteration-count: 3s;
@@ -150,7 +150,7 @@ blockquote p {
         font-size: 2rem;
         font-weight: 400;
         letter-spacing: 8px;
-        animation: moveInRight 1s ease-in-out;
+        animation: moveInTop 1s ease-in-out;
 
         @include respond(phone) {
           font-size: 1.8rem;
@@ -261,7 +261,7 @@ blockquote p {
 }
 
 .btn-animated {
-  animation: moveInBottom 0.5s ease-out 0.75s;
+  animation: moveInBottom 0.5s ease-out 2s;
   /*name, duration, timing function, delay */
   animation-fill-mode: backwards;
   /* give 0% animation style */
