@@ -1,4 +1,4 @@
-# Travel-Static-Website
+# Travel Tours Landing Page
 
 Landing page website utilizing html, css, and sass.
 
