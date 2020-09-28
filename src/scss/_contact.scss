@@ -8,7 +8,7 @@
     //transparent color 50% and onwards
     url(../img/nat-10.jpg);
   height: auto;
-  width: 60%;
+  width: 65%;
   margin: 0 auto;
   background-size: 100%; //same as cover, but 100% is for width only
   background-size: cover;
@@ -19,9 +19,9 @@
     background-image: linear-gradient(105deg, rgba($color-white, 0.9) 0%, rgba($color-white, 0.9) 60%, transparent 50%),
       //transparent color 50% and onwards
       url(../img/nat-10.jpg);
+    width: 90%;
   }
   @include respond(phone) {
-    width: 90%;
     background-image: linear-gradient(105deg, rgba($color-white, 0.9) 0%, rgba($color-white, 0.9) 100%, transparent 50%); //transparent color 50% and onwards
   }
   &__form {
@@ -38,7 +38,7 @@
 .heading-secondary {
   @include headingTitle;
   @include respond(tab-land) {
-    font-size: 2.5rem;
+    font-size: 2.4rem;
   }
 }
 
@@ -93,7 +93,8 @@
     transform: translateY(0);
   }
   &__radio-group {
-    width: 49%;
+    width: 75%;
+    margin: 10px auto;
     display: inline-block;
 
     @include respond(tab-land) {

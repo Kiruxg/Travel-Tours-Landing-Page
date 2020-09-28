@@ -46,7 +46,7 @@
     &__text {
       width: 60%;
       @include respond(phone) {
-        width: 90%;
+        width: 100%;
       }
     }
     @include respond(tab-land) {
