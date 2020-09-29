@@ -2,6 +2,8 @@
 
 Landing page website utilizing html, css, and sass.
 
+Live Demo: http://natours.kiruweb.com/
+
 ## Getting started
 
 To get the server running locally:
